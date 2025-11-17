@@ -1,0 +1,171 @@
+{
+	"info": {
+		"_postman_id": "8e5c1d81-c0a0-4093-9eb4-f8ab446e5934",
+		"name": "Tech Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27426680"
+	},
+	"item": [
+		{
+			"name": "Listar Posts Ativos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar Todos os Posts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/posts/professor",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"posts/professor"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/posts/6837d317e8161ba3e85ad8bd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"posts",
+						"6837d317e8161ba3e85ad8bd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\": \"Teste \",\r\n    \"descricao\": \"decima aula\",\r\n    \"autor\": \"Claudio\",\r\n    \"postAtivo\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/posts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Atualizar post",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\": \"Aulas de Nest \"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/posts/6837d317e8161ba3e85ad8bd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"posts",
+						"6837d317e8161ba3e85ad8bd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deletar post",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/posts/6837d317e8161ba3e85ad8bd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"posts",
+						"6837d317e8161ba3e85ad8bd"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lista por query",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/posts/busca?descricao=terceira",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"posts",
+						"busca"
+					],
+					"query": [
+						{
+							"key": "descricao",
+							"value": "terceira"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
