@@ -7,6 +7,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const postController_1 = __importDefault(require("../controllers/postController"));
 const routes = express_1.default.Router();
+console.log('listarPosts é função?', typeof postController_1.default.listarPosts);
 routes.get("/posts", postController_1.default.listarPosts); // Lista de posts ativos
 routes.get("/posts/professor", postController_1.default.listarPostsProfessor); // Lista de posts para professor
 routes.get("/posts/busca", postController_1.default.listarPostPorFiltro); // Lista de post por query string

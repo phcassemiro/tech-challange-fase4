@@ -1,1 +1,1 @@
-{"version":3,"file":"postRoutes.d.ts","sourceRoot":"","sources":["../../src/routes/postRoutes.ts"],"names":[],"mappings":"AACA,OAAgB,EAAE,MAAM,EAAE,MAAM,SAAS,CAAC;AAG1C,QAAA,MAAM,MAAM,EAAE,MAAyB,CAAC;AAUxC,eAAe,MAAM,CAAC"}
+{"version":3,"file":"postRoutes.d.ts","sourceRoot":"","sources":["../../src/routes/postRoutes.ts"],"names":[],"mappings":"AACA,OAAgB,EAAE,MAAM,EAAE,MAAM,SAAS,CAAC;AAG1C,QAAA,MAAM,MAAM,EAAE,MAAyB,CAAC;AAYxC,eAAe,MAAM,CAAC"}
