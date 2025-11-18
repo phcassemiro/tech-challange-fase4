@@ -1,8 +1,8 @@
 import express, { Application } from 'express';
 import cors from 'cors';
 import swaggerDocs from './swagger';
-import conectaNaDatabase from './src/config/dbConfig';
-import routes from './src/routes/route';
+import conectaNaDatabase from './config/dbConfig';
+import routes from './routes/route';
 
 const app: Application = express();
 

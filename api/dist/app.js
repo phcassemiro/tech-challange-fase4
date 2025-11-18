@@ -1,15 +1,20 @@
-import express from 'express';
-import cors from 'cors';
-import swaggerDocs from './swagger.js';
-import conectaNaDatabase from './src/config/dbConfig.js';
-import routes from './src/routes/route.js';
-const app = express();
-app.use(cors());
-app.use(express.json());
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const cors_1 = __importDefault(require("cors"));
+const swagger_1 = __importDefault(require("./swagger"));
+const dbConfig_1 = __importDefault(require("./config/dbConfig"));
+const route_1 = __importDefault(require("./routes/route"));
+const app = (0, express_1.default)();
+app.use((0, cors_1.default)());
+app.use(express_1.default.json());
 // Conexão com o banco
 (async () => {
     try {
-        const conexao = await conectaNaDatabase();
+        const conexao = await (0, dbConfig_1.default)();
         conexao.on("error", (erro) => {
             console.error("Erro de conexão:", erro);
         });
@@ -22,8 +27,8 @@ app.use(express.json());
     }
 })();
 // Aplicação das rotas
-app.use("/api", routes);
+app.use("/api", route_1.default);
 // Documentação Swagger
-swaggerDocs(app);
-export default app;
+(0, swagger_1.default)(app);
+exports.default = app;
 //# sourceMappingURL=app.js.map
