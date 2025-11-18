@@ -4,8 +4,6 @@ import PostController from "../controllers/postController";
 
 const routes: Router = express.Router();
 
-console.log('listarPosts é função?', typeof PostController.listarPosts);
-
 routes.get("/posts", PostController.listarPosts); // Lista de posts ativos
 routes.get("/posts/professor", PostController.listarPostsProfessor); // Lista de posts para professor
 routes.get("/posts/busca", PostController.listarPostPorFiltro); // Lista de post por query string

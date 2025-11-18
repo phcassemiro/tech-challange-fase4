@@ -12,7 +12,7 @@ const options: swaggerJsdoc.Options = {
       description: 'Documentação da API',
     },
   },
-  apis: ['./src/controllers/postController.ts', './src/controllers/authController.ts'], // atualizado para .ts
+  apis: ['./controllers/postController.ts', './controllers/authController.ts'], // atualizado para .ts
 };
 
 const swaggerSpec = swaggerJsdoc(options);

@@ -86,7 +86,7 @@ class AuthController {
     static async login(req, res, next) {
         try {
             const { email, senha } = req.body;
-            const usuarioEncontrado = await userModel_js_1.default.findOne({ email }).select('+cargo');
+            const usuarioEncontrado = await userModel_js_1.default.findOne({ email }).select('+senha +cargo');
             if (!usuarioEncontrado) {
                 return res.status(401).json({ mensagem: "Credenciais inválidas." });
             }

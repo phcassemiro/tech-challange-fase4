@@ -15,7 +15,7 @@ const options = {
             description: 'Documentação da API',
         },
     },
-    apis: ['./src/controllers/postController.ts', './src/controllers/authController.ts'], // atualizado para .ts
+    apis: ['./controllers/postController.ts', './controllers/authController.ts'], // atualizado para .ts
 };
 const swaggerSpec = (0, swagger_jsdoc_1.default)(options);
 const swaggerDocs = (app) => {

@@ -89,7 +89,9 @@ class AuthController {
     try {
       const { email, senha } = req.body;
 
-      const usuarioEncontrado = await Usuario.findOne({ email }).select('+cargo');
+
+
+      const usuarioEncontrado = await Usuario.findOne({ email }).select('+senha +cargo');
       if (!usuarioEncontrado) {
         return res.status(401).json({ mensagem: "Credenciais inválidas." });
       }
