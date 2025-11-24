@@ -3,6 +3,25 @@ import { usuario } from "../models/userModel.js";
 class UserController {
 
   // Lista todos os usuários (menos a senha)
+    /**
+     * @swagger
+     * /usuarios:
+     *   get:
+     *     summary: Lista todos os usuários (exceto senha)
+     *     tags:
+     *       - Usuários
+     *     responses:
+     *       200:
+     *         description: Lista de usuários retornada com sucesso
+     *         content:
+     *           application/json:
+     *             schema:
+     *               type: array
+     *               items:
+     *                 $ref: '#/components/schemas/Usuario'
+     *       500:
+     *         description: Erro interno do servidor
+     */
   static async listarUsuarios(req, res, next) {
     try {
       const lista = await usuario.find().select("-senha");
@@ -13,6 +32,50 @@ class UserController {
   }
 
   // Altera o cargo de um usuário
+    /**
+     * @swagger
+     * /usuarios/{id}/cargo:
+     *   patch:
+     *     summary: Altera o cargo de um usuário
+     *     tags:
+     *       - Usuários
+     *     parameters:
+     *       - in: path
+     *         name: id
+     *         required: true
+     *         schema:
+     *           type: string
+     *         description: ID do usuário
+     *     requestBody:
+     *       required: true
+     *       content:
+     *         application/json:
+     *           schema:
+     *             type: object
+     *             properties:
+     *               novoCargo:
+     *                 type: string
+     *                 enum: [professor, aluno, admin]
+     *                 description: Novo cargo do usuário
+     *     responses:
+     *       200:
+     *         description: Cargo atualizado com sucesso
+     *         content:
+     *           application/json:
+     *             schema:
+     *               type: object
+     *               properties:
+     *                 message:
+     *                   type: string
+     *                 usuario:
+     *                   $ref: '#/components/schemas/Usuario'
+     *       400:
+     *         description: Cargo inválido
+     *       404:
+     *         description: Usuário não encontrado
+     *       500:
+     *         description: Erro interno do servidor
+     */
   static async alterarCargo(req, res, next) {
     try {
       const { id } = req.params;

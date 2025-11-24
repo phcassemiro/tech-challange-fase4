@@ -4,7 +4,44 @@ import jwt from "jsonwebtoken";
 
 class AuthController {
   static async registrar(req, res, next) {
-    try {      
+      /**
+       * @swagger
+       * /auth/registrar:
+       *   post:
+       *     summary: Registrar novo usuário
+       *     tags:
+       *       - Autenticação
+       *     requestBody:
+       *       required: true
+       *       content:
+       *         application/json:
+       *           schema:
+       *             type: object
+       *             properties:
+       *               nome:
+       *                 type: string
+       *               email:
+       *                 type: string
+       *               senha:
+       *                 type: string
+       *     responses:
+       *       201:
+       *         description: Usuário criado com sucesso
+       *         content:
+       *           application/json:
+       *             schema:
+       *               type: object
+       *               properties:
+       *                 mensagem:
+       *                   type: string
+       *                 usuario:
+       *                   $ref: '#/components/schemas/Usuario'
+       *       400:
+       *         description: Campos obrigatórios ausentes ou e-mail já cadastrado
+       *       500:
+       *         description: Erro interno do servidor
+       */
+    try {
       const { nome, email, senha } = req.body;
 
       if (!nome || !email || !senha) {
@@ -22,7 +59,7 @@ class AuthController {
         nome,
         email,
         senha: senhaHash,
-        cargo: "aluno", 
+        cargo: "aluno",
       });
 
       res.status(201).json({
@@ -35,6 +72,41 @@ class AuthController {
   }
 
   static async login(req, res, next) {
+      /**
+       * @swagger
+       * /auth/login:
+       *   post:
+       *     summary: Realiza login do usuário
+       *     tags:
+       *       - Autenticação
+       *     requestBody:
+       *       required: true
+       *       content:
+       *         application/json:
+       *           schema:
+       *             type: object
+       *             properties:
+       *               email:
+       *                 type: string
+       *               senha:
+       *                 type: string
+       *     responses:
+       *       200:
+       *         description: Login realizado com sucesso
+       *         content:
+       *           application/json:
+       *             schema:
+       *               type: object
+       *               properties:
+       *                 token:
+       *                   type: string
+       *                 usuario:
+       *                   $ref: '#/components/schemas/Usuario'
+       *       401:
+       *         description: Credenciais inválidas
+       *       500:
+       *         description: Erro interno do servidor
+       */
     try {
       const { email, senha } = req.body;
 
@@ -47,7 +119,7 @@ class AuthController {
       if (!senhaValida) {
         return res.status(401).json({ mensagem: "Credenciais inválidas." });
       }
-      
+
       const cargoNormalizado = usuarioEncontrado.cargo ? usuarioEncontrado.cargo.toLowerCase() : "aluno";
 
       const token = jwt.sign(
